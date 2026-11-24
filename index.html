@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Lapor Humas | SD Plus Al Hikmah</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header Lembaga -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">AH</div>
+        <div>
+          <h1>E-Lapor Humas</h1>
+          <p>Layanan Pengaduan &amp; Aspirasi Digital — <strong>SD Plus Al Hikmah</strong></p>
+        </div>
+      </div>
+      <nav class="nav-tabs" aria-label="Menu Utama">
+        <button class="tab-btn active" data-tab="form-section">Buat Pengaduan</button>
+        <button class="tab-btn" data-tab="track-section">Lacak Tiket</button>
+        <button class="tab-btn" data-tab="public-section">Statistik Publik</button>
+        <button class="tab-btn" data-tab="admin-section">Panel Admin Humas</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Konten Utama -->
+  <main class="container main-content">
+    <!-- TAB 1: FORMULIR PENGADUAN -->
+    <section id="form-section" class="tab-panel active">
+      <div class="card">
+        <div class="card-header">
+          <h2>Sampaikan Pengaduan atau Aspirasi</h2>
+          <p>Setiap masukan Anda membantu Hubungan Masyarakat SD Plus Al Hikmah meningkatkan mutu layanan pendidikan.</p>
+        </div>
+
+        <form id="complaint-form">
+          <div class="toggle-box">
+            <label class="switch-label">
+              <input type="checkbox" id="is-anonymous" />
+              <span>Kirim sebagai <strong>Anonim</strong> (sembunyikan nama &amp; kontak)</span>
+            </label>
+          </div>
+
+          <div id="identity-fields" class="grid-2">
+            <div class="form-group">
+              <label for="reporter-name">Nama Lengkap Pelapor *</label>
+              <input type="text" id="reporter-name" placeholder="Contoh: Budi Santoso" required />
+            </div>
+            <div class="form-group">
+              <label for="reporter-contact">No. WhatsApp / Email *</label>
+              <input type="text" id="reporter-contact" placeholder="Contoh: 081234567890" required />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="reporter-role">Status Pelapor *</label>
+              <select id="reporter-role" required>
+                <option value="Wali Murid">Wali Murid</option>
+                <option value="Siswa">Siswa</option>
+                <option value="Guru / Tendik">Guru / Tenaga Kependidikan</option>
+                <option value="Masyarakat Umum">Masyarakat Umum</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="report-type">Jenis Laporan *</label>
+              <select id="report-type" required>
+                <option value="Pengaduan">Pengaduan</option>
+                <option value="Aspirasi">Aspirasi</option>
+                <option value="Permintaan Informasi">Permintaan Informasi</option>
+                <option value="Apresiasi">Apresiasi</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="service-category">Bidang Layanan Tujuan *</label>
+              <select id="service-category" required>
+                <option value="Akademik & Pembelajaran">Akademik &amp; Pembelajaran</option>
+                <option value="Sarana & Prasarana">Sarana &amp; Prasarana Sekolah</option>
+                <option value="Kesiswaan & Kedisiplinan">Kesiswaan &amp; Kedisiplinan</option>
+                <option value="Administrasi & Tata Usaha">Administrasi &amp; Tata Usaha</option>
+                <option value="Saran & Apresiasi Umum">Saran &amp; Apresiasi Umum</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="incident-date">Tanggal Kejadian *</label>
+              <input type="date" id="incident-date" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="incident-location">Lokasi Kejadian *</label>
+            <input type="text" id="incident-location" placeholder="Contoh: Ruang Kelas 3A / Gerbang Utama" required />
+          </div>
+
+          <div class="form-group">
+            <label for="complaint-title">Judul Singkat Laporan *</label>
+            <input type="text" id="complaint-title" placeholder="Contoh: Perbaikan pendingin ruangan di ruang kelas 4B" required />
+          </div>
+
+          <div class="form-group">
+            <label for="complaint-desc">Uraian Kronologi / Aspirasi *</label>
+            <textarea id="complaint-desc" rows="4" placeholder="Jelaskan kronologi kejadian, lokasi, dan saran tindak lanjut secara jelas..." required></textarea>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="evidence-files">Unggah Bukti Pendukung</label>
+              <input type="file" id="evidence-files" accept=".pdf,.doc,.docx,image/*,video/*" multiple />
+              <small class="field-hint">PDF, Word, foto, screenshot, atau video singkat</small>
+
+              <label for="camera-photo" class="camera-upload-btn">Ambil Foto Langsung</label>
+              <input type="file" id="camera-photo" accept="image/*" capture="environment" />
+              <small class="field-hint">Tombol ini membuka kamera perangkat untuk mengambil bukti foto.</small>
+              <div id="camera-photo-preview" class="camera-photo-preview hidden"></div>
+            </div>
+            <div class="form-group">
+              <label for="notification-channel">Notifikasi Perubahan Status</label>
+              <select id="notification-channel">
+                <option value="Tidak Ada">Tidak perlu notifikasi</option>
+                <option value="Email">Email</option>
+                <option value="SMS">SMS</option>
+                <option value="WhatsApp">WhatsApp</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="toggle-box privacy-options">
+            <label class="switch-label">
+              <input type="checkbox" id="is-confidential" />
+              <span>Tandai sebagai <strong>Rahasia</strong> (batasi isi laporan agar tidak tampil publik)</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Kirim Laporan Sekarang</button>
+        </form>
+
+        <!-- Notifikasi Nomor Tiket -->
+        <div id="ticket-result" class="alert-success hidden" role="status">
+          <h3>Laporan Berhasil Diterima</h3>
+          <p>Simpan kode tiket berikut untuk memantau status tindak lanjut dari Tim Humas SD Plus Al Hikmah:</p>
+          <div class="ticket-box">
+            <code id="generated-ticket-code">HMS-2026-000</code>
+            <button type="button" id="copy-ticket-btn" class="btn btn-outline">Salin Kode</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PELACAK STATUS TIKET -->
+    <section id="track-section" class="tab-panel">
+      <div class="card">
+        <div class="card-header">
+          <h2>Lacak Status Tindak Lanjut</h2>
+          <p>Masukkan kode tiket pengaduan Anda untuk melihat perkembangan penanganan oleh Humas SD Plus Al Hikmah.</p>
+        </div>
+
+        <form id="track-form" class="track-bar">
+          <input type="text" id="track-input" placeholder="Masukkan kode tiket (misal: HMS-2026-101)" required />
+          <button type="submit" class="btn btn-primary">Cek Status</button>
+        </form>
+
+        <div id="track-result" class="track-result-area"></div>
+      </div>
+    </section>
+
+    <!-- TAB 3: DASHBOARD STATISTIK PUBLIK -->
+    <section id="public-section" class="tab-panel">
+      <div class="card">
+        <div class="card-header">
+          <h2>Statistik Pengaduan & Aspirasi Publik</h2>
+          <p>Ringkasan transparansi penanganan laporan. Identitas dan laporan rahasia tidak ditampilkan.</p>
+        </div>
+        <div class="stats-grid public-stats">
+          <div class="stat-card"><span class="stat-label">Total Laporan</span><strong id="public-stat-total" class="stat-value">0</strong></div>
+          <div class="stat-card"><span class="stat-label">Diterima</span><strong id="public-stat-received" class="stat-value">0</strong></div>
+          <div class="stat-card"><span class="stat-label">Diproses</span><strong id="public-stat-process" class="stat-value">0</strong></div>
+          <div class="stat-card"><span class="stat-label">Selesai</span><strong id="public-stat-done" class="stat-value">0</strong></div>
+        </div>
+        <div id="public-report-list" class="public-report-list"></div>
+      </div>
+    </section>
+
+    <!-- TAB 4: PANEL SIMULASI ADMIN HUMAS -->
+    <section id="admin-section" class="tab-panel">
+      <!-- Login Admin -->
+      <div id="admin-login-box" class="card narrow-card">
+        <div class="card-header">
+          <h2>Akses Staf Humas SD Plus Al Hikmah</h2>
+          <p>Masukkan PIN simulasi admin untuk mengelola laporan masuk dan memberikan tanggapan resmi.</p>
+        </div>
+        <form id="admin-login-form">
+          <div class="form-group">
+            <label for="admin-pin-input">PIN Admin (Gunakan PIN Demo: <strong>1234</strong>)</label>
+            <input type="password" id="admin-pin-input" placeholder="Masukkan 4 digit PIN" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Masuk ke Dashboard</button>
+        </form>
+      </div>
+
+      <!-- Dashboard Admin -->
+      <div id="admin-dashboard" class="hidden">
+        <div class="dashboard-header">
+          <div>
+            <h2>Dashboard Manajemen Pengaduan</h2>
+            <p>Unit Hubungan Masyarakat — SD Plus Al Hikmah</p>
+          </div>
+          <button type="button" id="logout-admin-btn" class="btn btn-outline">Keluar Mode Admin</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-label">Total Laporan</span>
+            <strong id="stat-total" class="stat-value">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Sedang Diproses</span>
+            <strong id="stat-process" class="stat-value">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Selesai Ditindaklanjuti</span>
+            <strong id="stat-done" class="stat-value">0</strong>
+          </div>
+        </div>
+
+        <div id="admin-ticket-list" class="admin-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="chatbot" class="chatbot">
+    <button type="button" id="chatbot-toggle" class="chatbot-toggle" aria-label="Buka asisten virtual">Asisten Lapor</button>
+    <div id="chatbot-window" class="chatbot-window hidden">
+      <div class="chatbot-header">
+        <div><strong>Asisten AI E-Lapor</strong><small id="chatbot-mode">Gemini siap — konfigurasi API diperlukan</small></div>
+        <div class="chatbot-header-actions">
+          <button type="button" id="chatbot-settings" aria-label="Pengaturan Gemini" title="Pengaturan Gemini">⚙</button>
+          <button type="button" id="chatbot-close" aria-label="Tutup">&times;</button>
+        </div>
+      </div>
+      <form id="chatbot-settings-form" class="chatbot-settings hidden">
+        <label for="gemini-api-key">API Key Gemini</label>
+        <input type="password" id="gemini-api-key" placeholder="Masukkan API key Google AI" autocomplete="off" />
+        <label for="gemini-model">Model Gemini</label>
+        <input type="text" id="gemini-model" value="gemini-2.5-flash" />
+        <button type="submit">Simpan Pengaturan</button>
+        <small>Kunci hanya disimpan untuk sesi browser saat ini dan tidak ditulis ke kode website.</small>
+      </form>
+      <div id="chatbot-messages" class="chatbot-messages">
+        <div class="chat-message bot">Halo! Saya dapat membantu Anda membuat laporan, melacak tiket, atau menjawab pertanyaan umum.</div>
+      </div>
+      <div class="chatbot-options">
+        <button type="button" data-chat="cara">Cara melapor</button>
+        <button type="button" data-chat="tiket">Melacak tiket</button>
+        <button type="button" data-chat="privasi">Anonim & rahasia</button>
+        <button type="button" data-chat="status">Arti status</button>
+      </div>
+      <form id="chatbot-form" class="chatbot-form">
+        <input type="text" id="chatbot-input" placeholder="Tulis pertanyaan Anda..." autocomplete="off" required />
+        <button type="submit" aria-label="Kirim pesan">Kirim</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer Identitas Akademik & Kelompok -->
+  <footer class="footer">
+    <div class="container">
+      <p><strong>Produk Praktik Mata Kuliah Public Relations Management</strong> — Prodi Manajemen Pendidikan Islam (MPI), FTIK UIN Syekh Wasil Kediri (TA 2026/2027)</p>
+      <p class="team-list">
+        <strong>Kelompok 5 — Kelas A:</strong>
+        Puspa Wadani (24205004) &bull;
+        Ahmad Riski Fadila (24205017) &bull;
+        Nanik Khoirotin (24205029) &bull;
+        Moh Izza Romadlon (24205035) &bull;
+        Ziana Zakiah Darojat (24205061)
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
